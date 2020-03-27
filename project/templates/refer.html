@@ -1,0 +1,28 @@
+{% extends "skeleton.html" %}
+{% block content %}
+
+<div class="content-section">
+    <form method="GET" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Referal Code</legend>
+            <div class="form-group">
+                <p class="border-bottom mb-1">Current referal code for <b>{{data.title}}</b>
+                    is : <b> {{ data.referal_code }} </b>, it was created by <b> {{ data.created_by }}
+                         </b> on <b> {{ date }} </b></p>
+            </div>
+        </fieldset>
+    </form>
+    <form method="POST" action="">
+        <div class="form-group">
+            {{ form.generate(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Generate a new referal code by clicking on the button above
+    </small>
+</div>
+
+{% endblock content %}

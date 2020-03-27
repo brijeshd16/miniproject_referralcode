@@ -1,0 +1,50 @@
+{% extends "skeleton.html" %}
+{% block content %}
+{% if current_user.is_authenticated %}
+{% set existingtitle = titles %}
+<div class="media content-section">
+    <div class="media-body">
+        <div>
+            <div class="panel panel-primary marg-top">
+                <div class="chat-head account-heading article-metadata border-bottom form-control-lg">
+                    <span class="glyphicon glyphicon-comment"></span> {{ title }}
+                </div>
+                <div class="panel-body">
+                    <ul class="chat-li">
+                        <li class="right clearfix">
+                            {% for t in post %}
+                            <div class="chat-li-body clearfix">
+                                <div class="list-group-item list-group-item-light">
+                                    <div class="header">
+                                        <a class="mr-2 primary-font" href="#">{{ t.author.username }}</a>
+                                    </div>
+                                    <p class="text-secondary">
+                                        {{ t.content }}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer mb-4">
+                    <div class=" content-section" style="margin-top: 10px;">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <textarea type="text" class="form-control input-sm"
+                                    placeholder="Type your message here..." ></textarea>
+                            
+                                <button class="btn btn-outline-info" style="margin-left: 10px;">
+                                    Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<h1>Welcome to this Forum ! </h1>
+{% endif %}
+{% endblock content %}
